@@ -1,0 +1,23 @@
+Nutrition Estimation Prompt (embedded inside recipe_extraction prompt)
+=======================================================================
+
+This prompt section instructs the model to estimate nutritional values
+based solely on the ingredients extracted from the recipe text.
+
+Prompt excerpt used in the LLM chain:
+--------------------------------------
+
+"nutrition_estimate": {
+  "calories": <integer — approximate calories per serving based on ingredients>,
+  "protein": "<value in grams>g",
+  "carbs": "<value in grams>g",
+  "fat": "<value in grams>g"
+}
+
+Rules applied:
+- Estimate values per serving (divide total by servings count).
+- Base estimates on standard nutritional databases (USDA averages).
+- Round calories to nearest 10; protein/carbs/fat to nearest gram.
+- If certain ingredients are ambiguous (e.g., "a pinch of salt"), ignore their macros.
+- Do NOT hallucinate ingredients not present in the recipe.
+- Label format: "25g" (no space between number and unit).

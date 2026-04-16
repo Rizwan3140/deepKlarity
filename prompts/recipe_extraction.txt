@@ -1,0 +1,50 @@
+You are an expert recipe analyst. Given the raw text scraped from a recipe blog page, extract and generate structured data.
+
+SCRAPED PAGE TEXT:
+{page_text}
+
+SOURCE URL: {url}
+
+Your task is to return a single valid JSON object with ALL of the following fields.
+Do NOT include markdown code fences or any text outside the JSON.
+
+{
+  "title": "Recipe title as a string",
+  "cuisine": "Cuisine type (e.g., Italian, American, Indian). Infer if not explicit.",
+  "prep_time": "Preparation time as a string (e.g., '10 mins')",
+  "cook_time": "Cooking time as a string (e.g., '20 mins')",
+  "total_time": "Total time as a string (e.g., '30 mins')",
+  "servings": <integer number of servings>,
+  "difficulty": "one of: easy, medium, hard — based on technique complexity and time",
+  "ingredients": [
+    {"quantity": "amount", "unit": "unit of measurement or empty string", "item": "ingredient name"}
+  ],
+  "instructions": ["Step 1 text", "Step 2 text"],
+  "nutrition_estimate": {
+    "calories": <integer per serving>,
+    "protein": "Xg",
+    "carbs": "Xg",
+    "fat": "Xg"
+  },
+  "substitutions": [
+    "Substitution suggestion 1",
+    "Substitution suggestion 2",
+    "Substitution suggestion 3"
+  ],
+  "shopping_list": {
+    "dairy": ["item1"],
+    "produce": ["item2"],
+    "pantry": ["item3"],
+    "meat": ["item4"],
+    "bakery": ["item5"]
+  },
+  "related_recipes": ["Recipe name 1", "Recipe name 2", "Recipe name 3"]
+}
+
+Rules:
+- Base ALL extractions strictly on the scraped text. Do not invent ingredients or steps not present.
+- For nutrition, substitutions, shopping list, and related recipes — generate reasonable estimates grounded in the extracted recipe.
+- Only include shopping_list categories that have items. Omit empty categories.
+- Return exactly 3 substitutions and 3 related recipes.
+- If a field cannot be determined from the text, use null for strings and 0 for integers.
+- Return ONLY the JSON object. No extra text.

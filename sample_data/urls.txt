@@ -1,0 +1,7 @@
+# Sample Recipe URLs used for testing
+
+https://www.allrecipes.com/recipe/23891/grilled-cheese-sandwich/
+https://www.allrecipes.com/recipe/228122/best-pasta-ever/
+https://www.seriouseats.com/the-best-chicken-tikka-masala-recipe
+https://www.bbcgoodfood.com/recipes/classic-spaghetti-carbonara
+https://www.foodnetwork.com/recipes/alton-brown/guacamole-recipe-1940609

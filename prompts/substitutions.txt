@@ -1,0 +1,23 @@
+Ingredient Substitution Prompt (embedded inside recipe_extraction prompt)
+=========================================================================
+
+This prompt section instructs the model to generate 3 ingredient substitutions
+for dietary preferences, allergies, or ingredient availability.
+
+Prompt excerpt used in the LLM chain:
+--------------------------------------
+
+"substitutions": [
+  "Replace <original ingredient> with <substitute> for <reason/benefit>.",
+  "Replace <original ingredient> with <substitute> for <reason/benefit>.",
+  "Replace <original ingredient> with <substitute> for <reason/benefit>."
+]
+
+Rules applied:
+- Generate exactly 3 substitutions.
+- Each substitution must reference a real ingredient that appears in the extracted recipe.
+- Cover at least one of: dietary restriction (vegan, dairy-free, gluten-free),
+  healthier alternative, or ingredient availability substitute.
+- Substitutions must be realistic and commonly known.
+- Do NOT suggest substitutions for seasonings (salt, pepper) unless there is a dietary reason.
+- Format: "Replace X with Y for Z benefit."

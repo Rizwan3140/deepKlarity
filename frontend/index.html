@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Extractor & Meal Planner</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="logo">🍽️ Recipe Extractor</span>
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="extract">Extract Recipe</button>
+        <button class="tab-btn" data-tab="history">Saved Recipes</button>
+        <button class="tab-btn" data-tab="meal-planner">Meal Planner</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB 1: Extract -->
+    <section id="tab-extract" class="tab-panel active">
+      <div class="card extract-card">
+        <h2>Extract Recipe from URL</h2>
+        <p class="subtitle">Paste a recipe blog URL below. We'll scrape, parse, and structure it automatically.</p>
+        <div class="input-row">
+          <input
+            id="url-input"
+            type="url"
+            placeholder="https://www.allrecipes.com/recipe/23891/grilled-cheese-sandwich/"
+          />
+          <button id="extract-btn" class="btn-primary">Extract Recipe</button>
+        </div>
+        <div id="extract-error" class="error-msg hidden"></div>
+      </div>
+
+      <div id="recipe-result" class="hidden">
+        <div id="recipe-display"></div>
+      </div>
+
+      <div id="extract-loader" class="loader-container hidden">
+        <div class="spinner"></div>
+        <p>Scraping page and extracting recipe with AI…</p>
+      </div>
+    </section>
+
+    <!-- TAB 2: History -->
+    <section id="tab-history" class="tab-panel hidden">
+      <div class="card">
+        <div class="card-header-row">
+          <h2>Saved Recipes</h2>
+          <button id="refresh-history-btn" class="btn-secondary">Refresh</button>
+        </div>
+        <div id="history-loader" class="loader-container hidden">
+          <div class="spinner"></div>
+        </div>
+        <div id="history-empty" class="empty-state hidden">No recipes saved yet. Extract one in Tab 1!</div>
+        <div id="history-error" class="error-msg hidden"></div>
+        <table id="history-table" class="hidden">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Cuisine</th>
+              <th>Difficulty</th>
+              <th>Date Extracted</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 3: Meal Planner -->
+    <section id="tab-meal-planner" class="tab-panel hidden">
+      <div class="card">
+        <h2>Meal Planner</h2>
+        <p class="subtitle">Select 2–5 saved recipes to generate a combined shopping list.</p>
+        <div id="planner-loader" class="loader-container hidden">
+          <div class="spinner"></div>
+        </div>
+        <div id="planner-recipes" class="planner-checkboxes"></div>
+        <div id="planner-error" class="error-msg hidden"></div>
+        <button id="generate-plan-btn" class="btn-primary mt-1">Generate Meal Plan</button>
+        <div id="meal-plan-result" class="hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
