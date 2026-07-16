@@ -9,7 +9,7 @@ from langchain_core.prompts import PromptTemplate
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyD5UFMwtGp9eY-XcCwS_CSwAYleSB7VkMs")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "COPY YOUR KEY HERE")
 MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 
 
